@@ -1,0 +1,312 @@
+
+<html>
+<head>
+	<title>Blood group</title>
+	 <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="shortcut icon" href="../../docs-assets/ico/favicon.png">
+
+      <!-- Bootstrap core CSS -->
+    <link href="/dist/css/bootstrap.css" rel="stylesheet">
+
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	   <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+	  .form-control {
+margin-bottom: 10;
+width: 250px;
+
+}
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    	
+    <script type="text/javascript">
+	var center;
+	var map;
+	var marker;
+	var _lat = 11.049038;
+	var _long = 76.99218;
+	function initialize() {
+	
+	var myLatlng = new google.maps.LatLng(_lat,_long);
+        var mapOptions = {
+          center: myLatlng,
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+			
+	marker = new google.maps.Marker({
+      position: myLatlng,
+	  draggable:true,
+      map: map,
+      title: 'Your location'
+  });	
+  marker.draggable = true;
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+	
+	
+	
+ function load() {
+      
+	  
+	  // var marker = new GMarker(center, {draggable: true});
+		//  map.addOverlay(marker);
+	 /* google.maps.event.addListener(map, 'click', function(event) {
+  
+    $("#lat").val(event.latLng.lat());
+	$("#long").val(event.latLng.lng());
+   
+});*/
+ $("#lat").val(_lat);
+	 $("#long").val(_long);
+
+google.maps.event.addListener(marker, 'dragstart', function(event) {
+   $("#lat").val(event.latLng.lat());
+	$("#long").val(event.latLng.lng());
+});
+       /*
+	   
+	  
+	   //r map = new GMap2(document.getElementById("map"));
+        //map.addControl(new GSmallMapControl());
+        //map.addControl(new GMapTypeControl());
+       // var center = new GLatLng(48.89364,  	2.33739);
+        map.setCenter(center, 15);
+        geocoder = new GClientGeocoder();
+        var marker = new GMarker(center, {draggable: true});  
+        map.addOverlay(marker);
+       $("#lat").val(center.lat().toFixed(5));
+       $("#long").val(center.lng().toFixed(5));
+	  GEvent.addListener(marker, "dragend", function() {
+       var point = marker.getPoint();
+	      map.panTo(point);
+       document.getElementById("lat").innerHTML = point.lat().toFixed(5);
+       document.getElementById("lng").innerHTML = point.lng().toFixed(5);
+
+        });
+
+
+	 GEvent.addListener(map, "moveend", function() {
+		  map.clearOverlays();
+    var center = map.getCenter();
+		  var marker = new GMarker(center, {draggable: true});
+		  map.addOverlay(marker);
+		  document.getElementById("lat").innerHTML = center.lat().toFixed(5);
+	   document.getElementById("lng").innerHTML = center.lng().toFixed(5);
+
+
+	 GEvent.addListener(marker, "dragend", function() {
+      var point =marker.getPoint();
+	     map.panTo(point);
+      document.getElementById("lat").innerHTML = point.lat().toFixed(5);
+	     document.getElementById("lng").innerHTML = point.lng().toFixed(5);
+
+        });
+ 
+        });
+*/
+      
+    }
+
+	  /* function showAddress(address) {
+	   var map = new GMap2(document.getElementById("map"));
+       map.addControl(new GSmallMapControl());
+       map.addControl(new GMapTypeControl());
+       if (geocoder) {
+        geocoder.getLatLng(
+          address,
+          function(point) {
+            if (!point) {
+              alert(address + " not found");
+            } else {
+		  document.getElementById("lat").innerHTML = point.lat().toFixed(5);
+	   document.getElementById("lng").innerHTML = point.lng().toFixed(5);
+		 map.clearOverlays()
+			map.setCenter(point, 14);
+   var marker = new GMarker(point, {draggable: true});  
+		 map.addOverlay(marker);
+
+		GEvent.addListener(marker, "dragend", function() {
+      var pt = marker.getPoint();
+	     map.panTo(pt);
+      document.getElementById("lat").innerHTML = pt.lat().toFixed(5);
+	     document.getElementById("lng").innerHTML = pt.lng().toFixed(5);
+        });
+
+
+	 GEvent.addListener(map, "moveend", function() {
+		  map.clearOverlays();
+    var center = map.getCenter();
+		  var marker = new GMarker(center, {draggable: true});
+		  map.addOverlay(marker);
+		  document.getElementById("lat").innerHTML = center.lat().toFixed(5);
+	   document.getElementById("lng").innerHTML = center.lng().toFixed(5);
+
+	 GEvent.addListener(marker, "dragend", function() {
+     var pt = marker.getPoint();
+	    map.panTo(pt);
+    document.getElementById("lat").innerHTML = pt.lat().toFixed(5);
+	   document.getElementById("lng").innerHTML = pt.lng().toFixed(5);
+        });
+ 
+        });
+
+            }
+          }
+        );
+      }
+    }*/
+    </script>
+  <script type="text/javascript">/*
+//<![CDATA[
+var gs_d=new Date,DoW=gs_d.getDay();gs_d.setDate(gs_d.getDate()-(DoW+6)%7+3);
+var ms=gs_d.valueOf();gs_d.setMonth(0);gs_d.setDate(4);
+var gs_r=(Math.round((ms-gs_d.valueOf())/6048E5)+1)*gs_d.getFullYear();
+var gs_p = (("https:" == document.location.protocol) ? "https://" : "http://");
+document.write(unescape("%3Cscript src='" + gs_p + "s.gstat.orange.fr/lib/gs.js?"+gs_r+"' type='text/javascript'%3E%3C/script%3E"));
+//]]>*/
+</script>
+	
+	<script type="text/javascript">
+		function submitForm () {
+		alert("in submit form");
+		var name = $("#name").val(),
+				mobile = $("#mobile").val(),
+				blood = $("#blood").val(),
+				lat = $("#lat").val(),
+			
+				longitude = $("#long").val(),
+				place = $("#place").val(),
+				state = $("#state").val(),
+				country = $("#country").val();
+
+			var urlString = "mobileNumber=" + mobile + "&Name=" + name + "&bloodGroup=" + blood + "&long=" + longitude + "&lat=" + lat + "&place=" + place + "&state=" + state + "&country=" + country;
+			alert(urlString);
+			$.ajax({
+				url: "http://lsdn-hhmd.rhcloud.com/checkin?methodName=bloodgroupservice&methodType=setdata&" + urlString
+			}).done(function(data){
+				$('#maindiv').hide();
+				alert(data);
+
+			});
+		}
+		
+		function getBG() {
+			var blood = $("#blood2").val(),
+				lat = $("#lat").val(),
+				longitude = $("#long").val();
+				
+			var urlString = "bloodGroup=" + blood + "&long=" + longitude + "&lat=" + lat;
+			$.ajax({
+				url: "http://lsdn-hhmd.rhcloud.com/checkin?methodName=bloodgroupservice&methodType=getdata&" + urlString
+			}).done(function(data){
+				renderResults(JSON.parse(data));
+			});
+		}
+
+		function renderResults(data){
+			var template = "<table class='table' border='1'>" +
+								"<thead>" +
+								"<tr>" +
+									"<th>Name</th>" +
+									"<th>Mobile</th>" +
+									"<th>Blood Group</th>" +
+									"<th>Place</th>" +
+									"<th>State</th>" +
+									"<th>Country</th>" +
+								"</tr>" +	
+							"<thead>" +								
+							"<tbody>" +
+								"{CONTENT}" +
+							"</tbody>" +
+						"<table>";
+
+			var rows = "",
+				tuple;
+
+			for(var i=0,len=data.length; i<len; i++){
+				tuple = data[i];
+				rows += "<tr>" + "<td>" + tuple.Name + "</td>" + "<td>" + tuple.mobileNumber + "</td>" + "<td>" + tuple.bloodGroup + "</td>" + "<td>" + tuple.place + "</td>" + "<td>" + tuple.state + "</td>" + "<td>" + tuple.country + "</td>";
+			}
+
+			template = template.replace("{CONTENT}", rows);
+			$("#result-holder").html(rows);
+		}
+
+	</script>
+</head>
+<body onload="load()" onunload="GUnload()" >
+ 
+  <div class="container" id='maindiv'>
+       <form class="form-signin">
+        <h2 class="form-signin-heading">Enter your details</h2>
+		
+ <div id="map-canvas" style='margin-right: 10000;height: 325px; position: relative; background-color: rgb(229, 227, 223); overflow: hidden; -webkit-transform: translateZ(0);width: 325px;float: right;margin-right: 500;'></div>
+ <div id="getbgDiv" style="float:right;margin-right: 100;margin-top: -380;">
+	<h2 class="form-signin-heading">Search for blood</h2>
+	<select class="form-control" id="blood2">
+            <option>A Positive</option>
+			<option>A Negative</option>
+		    <option>A Unknown</option>
+			<option>B Positive</option>
+			<option>B Negative</option>
+			<option>B Unknown</option>
+			<option>AB Positive</option>
+			<option>AB Negative</option>
+			<option>AB Unknown</option>
+			<option>O Positive</option>
+			<option>O Negative</option>
+			<option>O Unknown</option>
+			<option>Unknown</option>
+        </select>
+		</div>
+	<div id="insertDetails" style='float:left;'>
+		<input type="text" id="name" class="form-control" placeholder="Name" required autofocus>
+        <input type="text" id="mobile" class="form-control" placeholder="Mobile Number" required>
+	    <select class="form-control" id="blood">
+            <option>A Positive</option>
+			<option>A Negative</option>
+		    <option>A Unknown</option>
+			<option>B Positive</option>
+			<option>B Negative</option>
+			<option>B Unknown</option>
+			<option>AB Positive</option>
+			<option>AB Negative</option>
+			<option>AB Unknown</option>
+			<option>O Positive</option>
+			<option>O Negative</option>
+			<option>O Unknown</option>
+			<option>Unknown</option>
+        </select>
+		<input type="text" class="form-control" placeholder="place" id="place" required autofocus>
+		<input type="text" class="form-control" placeholder="state"  id="state" required autofocus>
+		<input type="text" class="form-control" placeholder="Country" id="country" required autofocus>
+		<input type="text" class="form-control" placeholder="Latitude" id="lat" required autofocus disabled>
+		<input type="text" class="form-control" placeholder="Longitude" id="long" required autofocus disabled>
+      </form>
+	  </div>
+	  <button class="btn btn-lg btn-primary btn-block" onclick="submitForm()" style='width:150;' >Insert</button>
+		<button class="btn btn-lg btn-primary btn-block" onclick="getBG()" style="width:150; float:right;margin-top: -350;margin-right: 160;">Search</button>
+		<div id='result_table'>
+	<div id="result-holder" class='CSS_Table_Example' style="width:150; float:right;margin-top: -450;margin-right: 160;></div>
+	</div>
+		</div>
+    </div>		
+	
+		
+	</div>
+
+		
+	<footer>
+ 
+  <p>Copyright <a href="mailto:bijeshcnair@gmail.com">bijeshcnair@gmail.com</a></p>
+</footer>
+</body>
+</html>
